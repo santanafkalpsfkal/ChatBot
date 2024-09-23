@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
+.chat-window {
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #1a1919, #1a1919);
+  padding: 20px;
+  margin: 20px auto;
+  position: fixed;
+  top: 60px;
+  left: 270px;
+  right: 10px;
+  bottom: 0px;
+  transition: left 0.3s ease;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+}
+.chat-window-collapsed {
+  position: fixed;
+  top: 60px;
+  left: 100px;
+  right: 10px;
+  bottom: 0px;
+  transition: left 0.3s ease;
+}
+.messages {
+  z-index: 10; /* Asegura que el contenedor de mensajes esté encima del video */
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative; /* Necesario para que el video se posicione correctamente */
+  background: transparent; /* Asegura que el fondo sea transparente para ver el video */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* El video está detrás de los mensajes y el chat */
+}
+
+.messages > * {
+  position: relative;
+  z-index: 1; /* Asegura que el contenido esté por encima del video */
+}
+/* ...otros estilos... */
+
+/* Estilo para cada mensaje en la lista */
+.message {
+  padding: 10px;
+  max-width: 50%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  position: relative;
+  display: flex; /* Cambia a flex para alinear ícono y texto correctamente */
+  align-items: center;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para los mensajes enviados por el usuario */
+.message.sent {
+  background-color: #000000a1; /* Negro */
+  color: rgb(255, 255, 255);
+  align-self: flex-end; /* Alinea el mensaje del usuario a la derecha */
+  text-align: right;
+  border-radius: 30px 30px 0 30px; /* Bordes redondeados en la parte superior derecha */
+  margin-left: auto; /* Empuja el mensaje hacia la derecha */
+  padding: 10px; /* Espaciado interno para evitar desbordamiento */
+  max-width: 50%; /* Asegura que el mensaje no ocupe más del 80% del contenedor */
+  word-wrap: break-word; /* Permite que las palabras se dividan para evitar desbordamiento */
+  overflow-wrap: break-word; /* Compatibilidad adicional para división de palabras */
+  white-space: pre-wrap; /* Preserva espacios y saltos de línea */
+  margin-bottom: 10px; /* Espaciado inferior entre mensajes */
+  display: inline-block;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para los mensajes del asistente */
+.message.info {
+  background-color: rgba(44, 44, 44, 0.733);/* Gris claro */
+  color: #ffffff;
+  align-self: flex-start; /* Alinea el mensaje del asistente a la izquierda */
+  text-align: left;
+  border-radius: 30px 30px 30px 0; /* Bordes redondeados en la parte superior izquierda */
+  padding-left: 10px; /* Espaciado interno adecuado */
+  font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para el ícono del robot */
+.robot-icon {
+  width: 30px; /* Tamaño del ícono */
+  height: 30px;
+  margin-right: 10px; /* Espacio entre el ícono y el mensaje */
+  vertical-align: middle; /* Alineación vertical */
+}
+
+/* Estilo para los mensajes de cédula */
+.message.cedula {
+  border-radius: 0px 30px 30px 30px;
+  background-color: rgba(44, 44, 44, 0.733);/* Gris claro */
+  color: #ffffff; /* Color de texto negro */
+  padding: 10px; /* Espaciado interno para evitar desbordamiento */
+  max-width: 50%; /* Asegura que el mensaje no ocupe más del 80% del contenedor */
+  word-wrap: break-word; /* Permite que las palabras se dividan para evitar desbordamiento */
+  overflow-wrap: break-word; /* Compatibilidad adicional para división de palabras */
+  white-space: pre-wrap; /* Preserva espacios y saltos de línea */
+  margin-bottom: 10px; /* Espaciado inferior entre mensajes */
+  display: inline-block; /* Asegura que el mensaje se ajuste al contenido */
+  font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para el mensaje del total de cédulas */
+.message.total {
+  border-radius: 0px 30px 30px 30px;
+  align-self: flex-start; /* Alinea el mensaje del asistente a la izquierda */
+  text-align: left;
+  background-color: rgba(44, 44, 44, 0.733);/* Gris claro */
+  color: #ffffff;
+  padding: 10px;
+  max-width: 50%;
+  word-wrap: break-word;
+  display: inline-block; /* Asegura que el mensaje se ajuste al contenido */
+  font-family: "Roboto", sans-serif;
+}
+
+/* Estilo para el icono de copiar */
+.copy-icon {
+  position: absolute;
+  right: -30px; /* Ajusta el icono para que esté fuera del globo pero visible */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999999;
+  font-size: 16px; /* Tamaño del icono, ajústalo según necesites */
+}
+
+.copy-icon:hover {
+  color: #d4d4d4;
+}
+
+/* ...otros estilos... */
+
+/* Estilo para el formulario de entrada */
+.input-form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Estilo para el campo de entrada de texto */
+.input-form .ant-input {
+  flex: 1;
+  color: white;
+  background-color: #000000;
+  margin-right: 10px; /* Ajuste del margen para el campo de entrada */
+  border: none !important; /* Elimina el borde */
+  box-shadow: none !important; /* Elimina la sombra */
+}
+
+/* Opcional: Estilo para el placeholder del campo de entrada de texto */
+.input-form .ant-input::placeholder {
+  color: #8c8c8c; /* Gris oscuro para el placeholder */
+}
+
+/* Opcional: Estilo para el campo de entrada cuando está enfocado */
+.input-form .ant-input:focus {
+  background-color: #000000;
+  border-color: transparent !important; /* Sin borde visible en enfoque */
+  box-shadow: none !important; /* Sin sombra en enfoque */
+}
+
+/* Estilo para el botón de enviar */
+.input-form .ant-btn-primary {
+  background-color: #2196F3 !important; /* Azul claro */
+  border-color: #2196F3 !important;
+  padding: 10px;
+  border-radius: 50%; /* Hace el botón totalmente redondo */
+  min-width: 40px; /* Establece un ancho mínimo para el botón redondo */
+  height: 40px; /* Establece una altura fija para el botón redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el botón de enviar en hover */
+.input-form .ant-btn-primary:hover {
+  background-color: #1976D2 !important; /* Azul más oscuro en hover */
+  border-color: #1976D2 !important;
+}
+
+
+/* Estilo para el botón de limpiar chat */
+.input-form .ant-btn-danger {
+  background-color: #f44336 !important; /* Rojo */
+  border-color: #f44336 !important;
+  padding: 10px;
+  border-radius: 50%; /* Hace el botón totalmente redondo */
+  min-width: 40px; /* Establece un ancho mínimo para el botón redondo */
+  height: 40px; /* Establece una altura fija para el botón redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Estilo para el botón de limpiar chat en hover */
+.input-form .ant-btn-danger:hover {
+  background-color: #d32f2f !important; /* Rojo más oscuro en hover */
+  border-color: #d32f2f !important;
+}
+
+/* Estilo para el ícono dentro del botón */
+.input-form .ant-btn .anticon {
+  color: white; /* Color blanco para el ícono */
+}
+
+.input-form .ant-input {
+  padding: 10px;
+  background-color: #00000000;
+}
+
+/* Estilo para el placeholder del campo de entrada de texto */
+.input-form .ant-input::placeholder {
+  color: #8c8c8c; /* Gris oscuro para el placeholder */
+}
+
+/* Opcional: Estilo para el borde del campo de entrada de texto cuando está enfocado */
+.input-form .ant-input:focus {
+  background-color: #00000000;
+  border-color: #8c8c8c; /* Gris oscuro para el borde cuando el campo está enfocado */
+  box-shadow: 0 0 0 2px rgba(140, 140, 140, 0.2); /* Sombra ligera para el foco */
+}
+/* Estilo para la barra de desplazamiento */
+.messages::-webkit-scrollbar {
+  width: 12px;
+}
+
+.messages::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: #1d1d1d;
+  border-radius: 10px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+  background: #000000;
+}
+
+.app {
+  display: flex;
+}
+
+.main-content {
+  margin-left: 200px; /* Alinea el contenido principal al lado del menú */
+  padding: 20px; /* Espaciado interno */
+  flex: 1;
+}
+.input_form{
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, #1a1919, #1a1919);
+  margin: 20px auto;
+  padding: 20px ;
+  margin-top: 0%;
+  font-family: "Roboto", sans-serif;
+}

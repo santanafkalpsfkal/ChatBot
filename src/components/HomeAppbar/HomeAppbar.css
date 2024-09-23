@@ -1,0 +1,26 @@
+.Content {
+    padding: 10px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .collapsed_Header {
+    display: none;
+  }
+  
+  .fila {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .Fecha {
+    font-size: 14px;
+    color: #888;
+  }
+  

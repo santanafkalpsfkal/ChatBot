@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&display=swap');
+
+/* Estilos generales del menú superior */
+.top-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    bottom: 0px;
+    bottom: 0px;
+    position: fixed;
+    top: 10px;
+    left: 270px;
+    right: 10px;
+    bottom: 0px;
+    height: 60px;
+    transition: background-color 0.3s, left 0.3s;
+    border-radius: 20px;
+    padding: 0 20px;
+    z-index: 1000;
+    background: linear-gradient(to right, #1a1919, #1a1919);
+    /* Fondo degradado para el tema oscuro */
+}
+
+.top-menu-collapsed {
+    position: fixed;
+    top: 10px;
+    left: 100px;
+    right: 10px;
+    bottom: 0px;
+    transition: left 0.3s ease;
+}
+
+/* Estilo del botón de colapsar */
+.top-menu .ant-btn {
+    background: linear-gradient(to right, #818181, #141414);
+    /* Fondo degradado claro para el botón */
+    border-radius: 50%;
+    /* Botón redondo */
+    border: none;
+    /* Sin borde */
+    width: 40px;
+    /* Tamaño del botón */
+    height: 40px;
+    /* Tamaño del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 7px;
+    /* Ajusta la posición vertical del botón */
+}
+
+/* Efecto hover del botón de colapsar */
+.top-menu .ant-btn:hover {
+    background: linear-gradient(to right, #6a6a6a, #0f0f0f) !important;
+    /* Fondo degradado más oscuro al pasar el cursor */
+    color: #fff;
+    /* Color del icono al pasar el cursor */
+}
+
+/* Icono del botón de colapsar */
+.top-menu .ant-btn .anticon {
+    color: #fff;
+    /* Color del icono para el tema oscuro */
+}
+
+/* Estilos de los elementos restantes */
+.left-side,
+.right-side {
+    display: flex;
+    align-items: center;
+}
+
+.left-side {
+    flex: 1;
+}
+
+.right-side {
+    flex: 1;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+}
+
+.robot-status {
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease;
+    /* Transición para el tamaño */
+}
+
+.robot-text {
+    font-family: "PT Sans Narrow", sans-serif;
+    margin-left: 8px;
+    /* Espacio entre el icono y el texto */
+    color: rgb(255, 255, 255);
+    /* Color del texto */
+    font-size: 20px;
+}
+
+.date-display {
+    font-family: "Roboto", sans-serif;
+    margin-right: 20px;
+    /* Espacio a la derecha de la fecha */
+    color: rgba(161, 161, 161, 0.288);
+    /* Color del texto */
+    font-size: 12px;
+}
+
+.reload-page {
+    margin-right: 20px;
+    /* Espacio a la derecha del icono de recarga */
+}
+
+.network-status {
+    margin-right: 20px;
+    /* Espacio a la derecha del icono de red */
+}
+
+/* Estilo del icono de wifi */
+.network-status img {
+    width: 25px;
+    /* Tamaño inicial del icono */
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease, width 0.3s ease;
+    /* Transiciones suaves para el tamaño */
+}
+
+.network-status img:hover {
+    transform: scale(1.2);
+    /* Aumenta el tamaño al pasar el cursor */
+    width: 40px;
+    /* Tamaño aumentado al pasar el cursor */
+}
+
+/* Estilo del icono de robot */
+.robot-status img {
+    width: 50px;
+    /* Tamaño inicial del icono */
+    height: auto;
+    transition: transform 0.3s ease, width 0.3s ease;
+    /* Transiciones suaves para el tamaño */
+}
+
+.robot-status:hover img {
+    transform: scale(1.2);
+    /* Aumenta el tamaño al pasar el cursor */
+    width: 65px;
+    /* Tamaño aumentado al pasar el cursor */
+}

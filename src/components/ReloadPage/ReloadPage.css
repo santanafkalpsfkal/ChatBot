@@ -1,0 +1,18 @@
+.icon-update-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+}
+
+.icon-update-container img {
+  width: 20px!important; /* Tamaño inicial de la imagen */
+  height: 20px!important;  
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transiciones suaves */
+}
+
+/* Aplicar la transformación cuando el contenedor tenga la clase 'hovered' */
+.icon-update-container.hovered img {
+  transform: rotate(360deg) scale(1.5)!important;
+}

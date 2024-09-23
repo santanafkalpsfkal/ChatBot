@@ -1,0 +1,79 @@
+/* src/components/SidebarMenu.css */
+
+.sidebar-menu {
+    transition: width 0.3s, background-color 0.3s; /* Transición suave para el ancho y color de fondo */
+    min-height: 97vh;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    position: fixed;
+    top: 8px;
+    bottom: 8px;
+    left: 8px;
+    background: #fff; /* Fondo claro para el menú */
+}
+
+.sidebar-menu.collapsed {
+    width: 80px; /* Ancho cuando el menú está colapsado */
+}
+
+.sidebar-menu .sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    padding: 0 20px;
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+    flex: 0 0 auto; /* No estirar el contenedor del encabezado */
+    background: #fff; /* Fondo claro para el encabezado del menú */
+}
+
+.sidebar-menu .sidebar-header img {
+    width: 70px; /* Tamaño de la imagen */
+    transition: width 0.3s; /* Transición suave para el tamaño de la imagen */
+    margin-top: 10px;
+}
+
+.sidebar-menu .sidebar-header h2 {
+    margin: 4px 0 0; /* Espacio arriba y abajo del título */
+    font-size: 16px; /* Tamaño del texto del título */
+    transition: color 0.3s; /* Transición suave para el color del texto */
+    color: #000; /* Color del texto */
+}
+
+/* Fondo y color de los elementos del menú */
+.sidebar-menu-dark {
+    background: linear-gradient(to right, #1a1919, #1a1919); /* Fondo degradado oscuro para el menú */
+}
+
+.sidebar-menu-dark .sidebar-header {
+    background: linear-gradient(to right, #1a1919, #1a1919);
+}
+
+.sidebar-menu-dark .sidebar-header h2 {
+    color: #ffffff; /* Color del texto para el encabezado del menú */
+}
+
+/* Estilos para el menú */
+.ant-menu {
+    background: linear-gradient(to right, #1a1919, #1a1919) !important; /* Fondo degradado oscuro para el menú */
+}
+
+.ant-menu-item {
+    background: transparent; /* Fondo transparente para los ítems del menú */
+    background: linear-gradient(to right, #1a1919, #1a1919);
+}
+
+.ant-menu-item-selected {
+    background: linear-gradient(to right, #818181, #141414) !important; /* Fondo degradado para el ítem seleccionado */
+}
+
+.ant-menu-submenu {
+    background: linear-gradient(to right, #1a1919, #1a1919)!important; /* Fondo degradado oscuro para el submenú */
+}
+
+.ant-menu-submenu-popup {
+    background: linear-gradient(to right, #1a1919, #000000) !important; /* Fondo degradado oscuro para el popup del submenú */
+}
