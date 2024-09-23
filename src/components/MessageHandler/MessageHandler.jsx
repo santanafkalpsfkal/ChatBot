@@ -71,13 +71,15 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 100); // Tiempo en milisegundos (ajusta según necesites)
           },
         },
       ]);
@@ -94,19 +96,22 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 100); // Tiempo en milisegundos (ajustado a 50)
           },
         },
       ]);
       setInput('');
       return;
     }
+
 
     if (/estoy bien|bien|me encuentro bien|todo bien|estoy genial|genial/i.test(newMessage.text)) {
       setMessages([
@@ -117,19 +122,22 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 50); // Tiempo en milisegundos (ajustado a 50)
           },
         },
       ]);
       setInput('');
       return;
     }
+
 
     if (/gracias|te agradezco/i.test(newMessage.text)) {
       setMessages([
@@ -140,19 +148,22 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 50); // Tiempo en milisegundos (ajustado a 50)
           },
         },
       ]);
       setInput('');
       return;
     }
+
 
     if (/adiós|adios|hasta luego|nos vemos|chao/i.test(newMessage.text)) {
       setMessages([
@@ -163,13 +174,15 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 50); // Tiempo en milisegundos (ajustado a 50)
           },
         },
       ]);
@@ -186,13 +199,15 @@ const MessageHandler = () => {
           isInfoMessage: true,
           isTyping: true,
           onTypingComplete: () => {
-            setMessages((prevMessages) =>
-              prevMessages.map((msg, index) =>
-                index === updatedMessages.length
-                  ? { ...msg, isTyping: false }
-                  : msg
-              )
-            );
+            setTimeout(() => { // Ajusta el tiempo aquí
+              setMessages((prevMessages) =>
+                prevMessages.map((msg, index) =>
+                  index === updatedMessages.length
+                    ? { ...msg, isTyping: false }
+                    : msg
+                )
+              );
+            }, 50); // Tiempo en milisegundos (ajustado a 50)
           },
         },
       ]);
@@ -200,41 +215,13 @@ const MessageHandler = () => {
       return;
     }
 
+
     const cedulasList = extractCedulas(newMessage.text);
     if (cedulasList.length > 0) {
       const formattedCedulas = cedulasList.join(',');
       const total = cedulasList.length;
 
-      try {
-        const response = await fetch('http://localhost:5000/process-cedulas', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ cedulas: formattedCedulas }),
-        });
-
-        if (!response.ok) {
-          throw new Error('Error en la respuesta del servidor');
-        }
-
-        const data = await response.json();
-        console.log('Respuesta del backend:', data);
-      } catch (error) {
-        console.error('Error al enviar las cédulas:', error);
-        notification.error({
-          message: 'Error',
-          description: 'No se pudo enviar las cédulas al servidor.',
-          placement: 'topRight',
-          duration: 3,
-          icon: <img src={customIcon} alt="Custom Icon" style={{ width: '30px', height: '30px' }} />,
-          className: 'custom-notification',
-          style: {
-            backgroundColor: '#1d1c1c',
-          },
-        });
-      }
-
+      // Eliminé la llamada al servidor
       setCedulas(formattedCedulas);
       setTotalCedulas(total);
       setMessages([
